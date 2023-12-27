@@ -1,6 +1,9 @@
 // webpack.config.js
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const webpack = require('webpack');
+const CopyPlugin = require("copy-webpack-plugin");
+const WebpackAssetsManifest = require('webpack-assets-manifest');
 
 module.exports = {
     context: __dirname,
@@ -12,7 +15,7 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
-        port:3222
+        port: 3001
     },
     module: {
         rules: [
@@ -40,6 +43,26 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.resolve(__dirname, 'public/index.html'),
             filename: 'index.html'
+        }),
+        new CopyPlugin({
+            patterns: [
+                { from: "public/images", to: "images" },
+                { from: "public/favicon.ico", to: "favicon.ico" },
+                { from: "public/manifest.json", to: "manifest.json" },
+                // { from: "public/locales", to: "locales" }
+            ],
+        }),
+        // new webpack.ProvidePlugin({
+        //     process: 'process/browser',
+        // }),
+        new webpack.HotModuleReplacementPlugin(),
+        new WebpackAssetsManifest({
+            output: "asset-manifest.json",
+            transform(assets, manifest) {
+                return {
+                    files: assets
+                }
+            }
         })
     ]
 };
