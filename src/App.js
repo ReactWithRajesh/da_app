@@ -1,8 +1,13 @@
 import React from "react";
+import AppProvider from './AppProvider'
+import UnderDevelopment from './underDevelopment'
 
 
 export default class App extends React.Component {
     render() {
-        return <h1>welcome to app </h1>
+        return (
+            <AppProvider>
+                <UnderDevelopment />
+            </AppProvider>)
     }
 }

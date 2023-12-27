@@ -1,9 +1,11 @@
 import React from 'react';
-import 'core-js/modules/web.dom-collections.iterator';
-import ReactDOM from "react-dom";
-import App from './App'
+import ReactDOM from 'react-dom/client';
+import App from './App'; // Import your App component
 
-ReactDOM.render(
-    <App />,
-    document.getElementById('root')
+const rootElement = document.getElementById('root');
+
+ReactDOM.createRoot(rootElement).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
