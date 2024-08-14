@@ -7,9 +7,10 @@
     "webpack-dev-derver": "webpack-dev-server",
     "dev": "webpack serve --mode=development",
     "prod": " webpack --mode=production",
-    "serve": "npm run prod && serve -s dist"
+    "serve": "npm run prod && serve -s dist",
+    "build":"npm run build"
   },
-  "author": "Rajesh kumar @rksmech79@gmail.com",
+  "author": "Rajesh kumar @rjsreact@gmail.com",
   "license": "MIT",
   "dependencies": {
     "@babel/core": "^7.23.3",
